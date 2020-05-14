@@ -33,7 +33,7 @@ const authRoutes = createAuthRoutes({
   }
 });
 
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 app.get('/api/todo', async(req, res) => {
