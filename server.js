@@ -50,19 +50,19 @@ app.post('/api/todo', async(req, res) => {
     VALUES ($1, $2, $3)
     returning*;
   `, 
-  [req.body.task, req.body.completed, req.body.user_id]);
+  [req.body.task, req.body.completed, req.userId]);
 
   res.json(data.rows[0]);
 });
 
-app.put('/api/todo', async(req, res) => {
-  const id = req.body.id;
+app.put('/api/todo/id', async(req, res) => {
+  const id = req.params.id;
   const data = await client.query(`
     UPDATE todo 
     SET completed=$1
-    WHERE todo.id=$2
+    WHERE todo.id=$2 AND user_id=$3
     returning*;
-  `, [true, id]);
+  `, [true, id, req.userId]);
 
   res.json(data.rows);
 });
