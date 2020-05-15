@@ -55,7 +55,7 @@ app.post('/api/todo', async(req, res) => {
   res.json(data.rows[0]);
 });
 
-app.put('/api/todo/id', async(req, res) => {
+app.put('/api/todo/:id', async(req, res) => {
   const id = req.params.id;
   const data = await client.query(`
     UPDATE todo 
