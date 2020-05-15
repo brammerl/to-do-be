@@ -40,9 +40,10 @@ app.get('/api/todo', async(req, res) => {
   const data = await client.query(`
     SELECT todo.id, todo.task, todo.completed, users.username 
     from todo 
+    WHERE user_id = $1
     join users 
     on todo.user_id = users.id
-  `);
+  `, [req.userId]);
 
   res.json(data.rows);
 });
