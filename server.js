@@ -44,13 +44,13 @@ app.get('/api/todo', async(req, res) => {
   res.json(data.rows);
 });
 
-app.post('/api/todo', async(req, res) => {
+app.post('/api/todo/', async(req, res) => {
   const data = await client.query(`
     INSERT INTO todo (task, completed, user_id)
     VALUES ($1, $2, $3)
     returning*;
   `, 
-  [req.body.task, req.body.completed, req.userId]);
+  [req.body.task, false, req.userId]);
 
   res.json(data.rows[0]);
 });
