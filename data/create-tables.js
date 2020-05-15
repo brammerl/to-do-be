@@ -15,7 +15,6 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL,
-                    username VARCHAR(512) NOT NULL
                 );           
                 CREATE TABLE todo (
                     id SERIAL PRIMARY KEY NOT NULL,
