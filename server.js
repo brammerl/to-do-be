@@ -44,7 +44,7 @@ app.get('/api/todo', async(req, res) => {
   res.json(data.rows);
 });
 
-app.post('/api/todo/', async(req, res) => {
+app.post('/api/todo', async(req, res) => {
   const data = await client.query(`
     INSERT INTO todo (task, completed, user_id)
     VALUES ($1, $2, $3)
