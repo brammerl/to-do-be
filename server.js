@@ -28,7 +28,7 @@ const authRoutes = createAuthRoutes({
           VALUES ($1, $2)
           RETURNING id, email;
       `,
-    [user.email, hash, user.username]
+    [user.email, hash]
     ).then(result => result.rows[0]);
   }
 });
